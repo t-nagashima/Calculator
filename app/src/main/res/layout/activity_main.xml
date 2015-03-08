@@ -28,11 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:text=""
                 android:id="@+id/displayPanel"
                 android:gravity="center|right"
                 android:textSize="48sp"
-                android:layout_marginBottom="20dp"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LinearButton"
-            android:layout_weight="6">
+            android:layout_weight="1">
 
             <TableLayout
                 android:layout_width="fill_parent"

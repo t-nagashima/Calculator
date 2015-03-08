@@ -18,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
 
     String strTemp="";
     String strResult="0";
+    String strDisplay = "";
     int operator=0;
 
     @Override
@@ -66,19 +67,23 @@ public class MainActivity extends ActionBarActivity {
             }else{
                 if(strTemp.indexOf(".")==-1){
                     strTemp=strTemp+".";
+                    strDisplay = strDisplay+".";
                 }
             }
         }else{
             strTemp=strTemp+strInKey;
+            strDisplay = strDisplay + strInKey;
         }
 
-        showNumber(strTemp);
+       // showNumber(strTemp);
+        ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
     }
 
     public void functionKeyOnClick(View v){
         switch(v.getId()){
             case R.id.BtAC:
                 strTemp="";
+                strDisplay="";
                 strResult="0";
                 operator = 0;
                 break;
@@ -87,14 +92,16 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
 
-        showNumber(strTemp);
+        //showNumber(strDisplay);
+        ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
     }
 
     public void operatorKeyOnClick(View v){
+        String strInKey = (String) ((Button)v).getText();
         if(operator!=0){
             if(strTemp.length()>0){
                 strResult = doCalc();
-                showNumber(strResult);
+                //showNumber(strResult);
             }
         }else{
             if(strTemp.length()>0){
@@ -102,10 +109,15 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
+        strDisplay = strDisplay + strInKey;
         strTemp = "";
+        ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
 
         if(v.getId()==R.id.BtEq){
             operator = 0;
+            strDisplay = strDisplay + strResult;
+            //showNumber(strDisplay);
+            ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
         }else{
             operator = v.getId();
         }
