@@ -29,8 +29,10 @@
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/Result"
-                android:gravity="center|right"/>
+                android:id="@+id/displayPanel"
+                android:gravity="center|right"
+                android:textSize="48sp"
+                android:layout_marginBottom="20dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -59,7 +61,9 @@
                         android:text="PI"
                         android:id="@+id/BtPI"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -68,7 +72,9 @@
                         android:text="7"
                         android:id="@+id/BtSeven"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -77,7 +83,9 @@
                         android:text="8"
                         android:id="@+id/BtEight"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -86,7 +94,9 @@
                         android:text="9"
                         android:id="@+id/BtNine"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -95,7 +105,9 @@
                         android:text="/"
                         android:id="@+id/BtDiv"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="operatorKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                 </TableRow>
 
@@ -112,7 +124,9 @@
                         android:text="C"
                         android:id="@+id/BtC"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="functionKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -121,7 +135,9 @@
                         android:text="4"
                         android:id="@+id/BtFour"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -130,7 +146,9 @@
                         android:text="5"
                         android:id="@+id/BtFive"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -139,7 +157,9 @@
                         android:text="6"
                         android:id="@+id/BtSix"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -148,7 +168,10 @@
                         android:text="*"
                         android:id="@+id/BtMul"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="operatorKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"
+                        android:nestedScrollingEnabled="true"/>
                 </TableRow>
 
                 <TableRow
@@ -164,7 +187,9 @@
                         android:text="AC"
                         android:id="@+id/BtAC"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="functionKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -173,7 +198,9 @@
                         android:text="1"
                         android:id="@+id/BtOne"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -182,7 +209,9 @@
                         android:text="2"
                         android:id="@+id/BtTwo"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -191,7 +220,9 @@
                         android:text="3"
                         android:id="@+id/BtThree"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
 
                     <Button
                         style="?android:attr/buttonStyleSmall"
@@ -200,7 +231,9 @@
                         android:text="-"
                         android:id="@+id/BtMin"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"/>
+                        android:onClick="operatorKeyOnClick"
+                        android:padding="0dp"
+                        android:textSize="24sp"/>
                 </TableRow>
 
                 <TableRow
@@ -210,54 +243,64 @@
                     android:layout_weight="1">
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Base.TextAppearance.AppCompat.Button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="0"
                         android:id="@+id/BtZero"
                         android:layout_weight="1"
                         android:nestedScrollingEnabled="false"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Base.TextAppearance.AppCompat.Button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="00"
                         android:id="@+id/BtZZ"
                         android:layout_weight="1"
                         android:nestedScrollingEnabled="false"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Base.TextAppearance.AppCompat.Button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="."
                         android:id="@+id/BtDot"
                         android:layout_weight="1"
                         android:nestedScrollingEnabled="false"
-                        android:onClick="onClickButton"/>
+                        android:onClick="numKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Base.TextAppearance.AppCompat.Button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="="
                         android:id="@+id/BtEq"
                         android:layout_weight="1"
                         android:nestedScrollingEnabled="false"
-                        android:onClick="onClickButton"/>
+                        android:onClick="operatorKeyOnClick"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/Base.TextAppearance.AppCompat.Button"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="+"
                         android:id="@+id/BtPlu"
                         android:layout_weight="1"
-                        android:onClick="onClickButton"
-                        android:nestedScrollingEnabled="false"/>
+                        android:onClick="operatorKeyOnClick"
+                        android:nestedScrollingEnabled="false"
+                        android:textSize="24sp"
+                        android:padding="0dp"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
