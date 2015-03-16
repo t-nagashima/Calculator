@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +21,16 @@ public class MainActivity extends ActionBarActivity {
     String strResult="0";
     String strDisplay = "";
     int operator=0;
+    int etSelection=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EditText et = (EditText)findViewById(R.id.displayPanel);
+        et.setFocusable(false);
+        et.setHeight(et.getHeight());
 
         showNumber(strTemp);
         readPreferences();
@@ -64,19 +70,23 @@ public class MainActivity extends ActionBarActivity {
         if(strInKey.equals(".")){
             if(strTemp.length()==0){
                 strTemp="0.";
+                etSelection += 2;
             }else{
                 if(strTemp.indexOf(".")==-1){
                     strTemp=strTemp+".";
                     strDisplay = strDisplay+".";
+                    etSelection += 1;
                 }
             }
         }else{
             strTemp=strTemp+strInKey;
             strDisplay = strDisplay + strInKey;
+            etSelection += 1;
         }
 
        // showNumber(strTemp);
-        ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
+        ((EditText)findViewById(R.id.displayPanel)).setText(strDisplay);
+        ((EditText)findViewById(R.id.displayPanel)).setSelection(etSelection);
     }
 
     public void functionKeyOnClick(View v){
@@ -86,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
                 strDisplay="";
                 strResult="0";
                 operator = 0;
+                etSelection = 0;
                 break;
             case R.id.BtC:
                 strTemp="";
@@ -93,7 +104,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         //showNumber(strDisplay);
-        ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
+        ((EditText)findViewById(R.id.displayPanel)).setText(strDisplay);
+        ((EditText)findViewById(R.id.displayPanel)).setSelection(etSelection);
     }
 
     public void operatorKeyOnClick(View v){
@@ -110,14 +122,17 @@ public class MainActivity extends ActionBarActivity {
         }
 
         strDisplay = strDisplay + strInKey;
+        etSelection += 1;
         strTemp = "";
         ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
 
         if(v.getId()==R.id.BtEq){
             operator = 0;
-            strDisplay = strDisplay + strResult;
+            strDisplay = strDisplay + strResult + "\n";
+            etSelection = etSelection + 1 + strResult.length();
             //showNumber(strDisplay);
-            ((TextView)findViewById(R.id.displayPanel)).setText(strDisplay);
+            ((EditText)findViewById(R.id.displayPanel)).setText(strDisplay);
+            ((EditText)findViewById(R.id.displayPanel)).setSelection(etSelection);
         }else{
             operator = v.getId();
         }
